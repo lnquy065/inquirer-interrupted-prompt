@@ -1,6 +1,6 @@
 {
   "name": "inquirer-interrupted-prompt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turning any existing inquirer and its plugin prompts into prompts that can be interrupted with a custom key",
   "main": "index.js",
   "homepage": "https://github.com/lnquy065/inquirer-interrupted-prompt",
