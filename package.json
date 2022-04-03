@@ -1,0 +1,17 @@
+{
+  "name": "inquirer-interrupted-prompt",
+  "version": "1.0.0",
+  "description": "Allows to turn any existing inquirer and its plugin prompts into prompts that can be interrupted with a custom key",
+  "main": "index.js",
+  "homepage": "https://github.com/lnquy065/inquirer-interrupted-prompt",
+  "repository": "lnquy065/inquirer-interrupted-prompt",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lnquy065",
+  "license": "MIT",
+  "devDependencies": {
+    "inquirer": "^8.2.2",
+    "inquirer-autocomplete-prompt": "^2.0.0"
+  }
+}
