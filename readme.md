@@ -123,7 +123,7 @@ inquirer
             message: 'Interrupted input with <a> key',
             interruptedKeyname: 'a'
         },
-    .then((answers) => {
+    ]).then((answers) => {
         console.log(answers)
     })
     .catch((error) => {
@@ -134,6 +134,34 @@ inquirer
             }
         }
     });
+```
+## Exception handler
+
+If an interrupted event has been triggered, it will throw an exception. There are two ways you can do to handle the exception from interruption:
+
+### Promise
+
+```javascript
+inquirer
+    .prompt([])
+    .then((answers) => {})
+    .catch((error) => {
+        if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+            console.log('Prompt has been interrupted')
+        }
+    });
+```
+
+### Try - catch
+
+```javascript
+try {
+    await inquirer.prompt([]);
+} catch(error) {
+    if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+        console.log('Prompt has been interrupted')
+    }
+}
 ```
 
 ## License
