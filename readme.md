@@ -1,8 +1,8 @@
 # inquirer-interrupted-prompt
 
-Allows to turn any existing prompt into a prompt that can be interrupted with a custom key.
+Allows turning any existing [inquirer](https://github.com/SBoudrias/Inquirer.js) prompt into a prompt that can be interrupted with a custom key.
 
-It really works for menu and submenu programs. For example, we have an application that allows browsing and editing files:
+It works for menu and submenu programs. For example, we have an application that allows browsing and editing files:
 
 ```
 ==== File browser ====
@@ -17,9 +17,9 @@ Now we will create new file by select the second option. A promts will be shown 
 ? Input new file name:
 ```
 
-Assuming we don't want to create a file anymore, we want to go back to the main menu. Now, with interrupted prompt, we can easily go back by pressing `Esc` key or whatever key you want.
+Assuming we don't want to create a file anymore, we want to go back to the main menu. Now, with an interrupted prompt, we can easily go back by pressing the `Esc` key or whatever key you want.
 
-One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer prompts and its plugin to this format with just one function.
+One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer and its plugin prompts to this format with just one function.
 
 
 # Installation
@@ -32,7 +32,7 @@ or
 
 # Usage
 
-After import the package, we need to register new interrupted prompts to `inquirer`.
+After importing the package, we need to register new interrupted prompts to `inquirer`.
 
 For full code, please view `example.js` file in `example` folder.
 
@@ -80,9 +80,9 @@ inquirer
     });
 ```
 
-## Turn a inquirer prompts or its plugin to interrupted prompts
+## Turn an inquirer prompts or its plugin to interrupted prompts
 
-If you don't want to turn all default prompt, you can use `from` function to turn a specific prompt that you want.
+If you don't want to turn all default prompt, you can use the `from` function to turn a specific prompt that you want.
 
 ```javascript
 const inquirer = require('inquirer');
@@ -103,7 +103,7 @@ inquirer.registerPrompt('autocomplete', InterruptedPrompt.from(autocompletePromp
 
 ## Customize interrupted key
 
-You can set any keyname you want via `interruptedKeyname` in question option:
+You can set any key name you want via `interruptedKeyname` in question option:
 
 ```javascript
 inquirer
