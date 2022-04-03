@@ -1,6 +1,6 @@
 # inquirer-interrupted-prompt
 
-Allows turning any existing [inquirer](https://github.com/SBoudrias/Inquirer.js) prompt into a prompt that can be interrupted with a custom key.
+Allows turning any existing [inquirer](https://github.com/SBoudrias/Inquirer.js) and its plugin prompts into prompts that can be interrupted with a custom key.
 
 It works for menu and submenu programs. For example, we have an application that allows browsing and editing files:
 
