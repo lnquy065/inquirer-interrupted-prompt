@@ -2,6 +2,8 @@
 
 Allows turning any existing [inquirer](https://github.com/SBoudrias/Inquirer.js) and its plugin prompts into prompts that can be interrupted with a custom key.
 
+![Menu demo](https://raw.githubusercontent.com/lnquy065/inquirer-interrupted-prompt/master/example/demo-menu.gif)
+
 It works for menu and submenu programs. For example, we have an application that allows browsing and editing files:
 
 ```
@@ -20,6 +22,8 @@ Now we will create new file by select the second option. A promts will be shown 
 Assuming we don't want to create a file anymore, we want to go back to the main menu. Now, with an interrupted prompt, we can easily go back by pressing the `Esc` key or whatever key you want.
 
 One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer and its plugin prompts to this format with just one function.
+
+View demo menu code at: /example/menu.js
 
 
 # Installation
