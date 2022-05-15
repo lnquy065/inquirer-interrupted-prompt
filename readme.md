@@ -12,6 +12,7 @@ It works for menu and submenu programs. For example, we have an application that
 > Create new file
   Edit file
 ```
+
 Now we will create new file by select the second option. A promts will be shown to ask the file name:
 
 ```
@@ -24,7 +25,6 @@ Assuming we don't want to create a file anymore, we want to go back to the main 
 One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer and its plugin prompts to this format with just one function.
 
 View demo menu code at: /example/menu.js
-
 
 # Installation
 
@@ -43,8 +43,8 @@ For full code, please view `example.js` file in `example` folder.
 ## Turn all default inquirer prompts to interrupted prompts
 
 ```javascript
-const inquirer = require('inquirer');
-const InterruptedPrompt = require('inquirer-interrupted-prompt');
+const inquirer = require("inquirer");
+const InterruptedPrompt = require("inquirer-interrupted-prompt");
 
 InterruptedPrompt.replaceAllDefaults(inquirer);
 ```
@@ -52,36 +52,35 @@ InterruptedPrompt.replaceAllDefaults(inquirer);
 Now all default prompts `input, number, confirm, list, rawlist, expand, checkbox, password, editor` are turned. Now you can reuse your code without changing anything:
 
 ```javascript
-const inquirer = require('inquirer');
-const InterruptedPrompt = require('inquirer-interrupted-prompt');
+const inquirer = require("inquirer");
+const InterruptedPrompt = require("inquirer-interrupted-prompt");
 
 InterruptedPrompt.replaceAllDefaults(inquirer);
 
 inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'intr-input',
-            message: 'Interrupted input'
-        },
-        {
-            type: 'number',
-            name: 'intr-number',
-            message: 'Interrupted number'
-        }
-    ])
-    .then((answers) => {
-        console.log(answers)
-    })
-    .catch((error) => {
-        if (error.isTtyError) {
-           
-        } else {
-            if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
-                console.log('Prompt has been interrupted')
-            }
-        }
-    });
+  .prompt([
+    {
+      type: "input",
+      name: "intr-input",
+      message: "Interrupted input",
+    },
+    {
+      type: "number",
+      name: "intr-number",
+      message: "Interrupted number",
+    },
+  ])
+  .then((answers) => {
+    console.log(answers);
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+    } else {
+      if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+        console.log("Prompt has been interrupted");
+      }
+    }
+  });
 ```
 
 ## Turn an inquirer prompts or its plugin to interrupted prompts
@@ -89,52 +88,57 @@ inquirer
 If you don't want to turn all default prompt, you can use the `from` function to turn a specific prompt that you want.
 
 ```javascript
-const inquirer = require('inquirer');
-const inquirerInputPrompt = require('inquirer/lib/prompts/input');
-const InterruptedPrompt = require('inquirer-interrupted-prompt')
+const inquirer = require("inquirer");
+const inquirerInputPrompt = require("inquirer/lib/prompts/input");
+const InterruptedPrompt = require("inquirer-interrupted-prompt");
 
-inquirer.registerPrompt('input', InterruptedPrompt.from(inquirerInputPrompt));
+inquirer.registerPrompt("input", InterruptedPrompt.from(inquirerInputPrompt));
 ```
 
 Or with plugin prompts
 
 ```javascript
-const autocompletePrompt = require('inquirer-autocomplete-prompt');
-const InterruptedPrompt = require('inquirer-interrupted-prompt')
+const autocompletePrompt = require("inquirer-autocomplete-prompt");
+const InterruptedPrompt = require("inquirer-interrupted-prompt");
 
-inquirer.registerPrompt('autocomplete', InterruptedPrompt.from(autocompletePrompt));
+inquirer.registerPrompt(
+  "autocomplete",
+  InterruptedPrompt.from(autocompletePrompt)
+);
 ```
 
 ## Customize interrupted key
 
-You can set any key name you want via `interruptedKeyname` in question option:
+You can set any key name you want via `interruptedKeyName` in question option:
 
 ```javascript
 inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'intr-input',
-            message: 'Interrupted input with default <Esc> key'
-        },
-        {
-            type: 'input',
-            name: 'intr-input-2',
-            message: 'Interrupted input with <a> key',
-            interruptedKeyname: 'a'
-        },
-    ]).then((answers) => {
-        console.log(answers)
-    })
-    .catch((error) => {
-        if (error.isTtyError) {
-        } else {
-            if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
-                console.log('Prompt has been interrupted')
-            }
-        }
-    });
+  .prompt([
+    {
+      type: "input",
+      name: "intr-input",
+      message: "Interrupted input with default <Esc> key",
+    },
+    {
+      type: "input",
+      name: "intr-input-2",
+      message: "Interrupted input with <a> key",
+      interruptedKeyName: "a",
+    },
+  ])
+  .then((answers) => {
+    console.log(answers);
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+    } else {
+      if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+        console.log("Prompt has been interrupted");
+      }
+    }
+  });
 ```
+
 ## Exception handler
 
 If an interrupted event has been triggered, it will throw an exception. There are two ways you can do to handle the exception from interruption:
@@ -143,24 +147,24 @@ If an interrupted event has been triggered, it will throw an exception. There ar
 
 ```javascript
 inquirer
-    .prompt([])
-    .then((answers) => {})
-    .catch((error) => {
-        if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
-            console.log('Prompt has been interrupted')
-        }
-    });
+  .prompt([])
+  .then((answers) => {})
+  .catch((error) => {
+    if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+      console.log("Prompt has been interrupted");
+    }
+  });
 ```
 
 ### Try - catch
 
 ```javascript
 try {
-    await inquirer.prompt([]);
-} catch(error) {
-    if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
-        console.log('Prompt has been interrupted')
-    }
+  await inquirer.prompt([]);
+} catch (error) {
+  if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
+    console.log("Prompt has been interrupted");
+  }
 }
 ```
 

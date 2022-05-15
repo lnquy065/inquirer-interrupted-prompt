@@ -1,5 +1,4 @@
 const observe = require('inquirer/lib/utils/events')
-const { takeUntil } = require('rxjs/operators');
 
 const rejectIfInterrupted = (event, hotkey, reject) => {
     if (event.key.name === hotkey) reject(InterruptedPrompt.EVENT_INTERRUPTED)
@@ -13,11 +12,11 @@ const rejectIfInterrupted = (event, hotkey, reject) => {
 const from = (basePrompt) => {
     class IntrPrompt extends basePrompt {
         run(cb) {
-            const intrKeyname = this.opt.interruptedKeyname || 'escape'
+            const intrKeyName = this.opt.interruptedKeyName || this.opt.interruptedKeyname || 'escape'
             return new Promise((resolve, reject) => {
                 const events = observe(this.rl);
-                events.keypress.pipe(takeUntil(events.line)).forEach(e => rejectIfInterrupted(e, intrKeyname, reject));
-                super.run().then(resolve, reject);
+                events.keypress.pipe().forEach(e => rejectIfInterrupted(e, intrKeyName, reject));
+                super.run(cb).then(resolve, reject);
             })
         }
     }

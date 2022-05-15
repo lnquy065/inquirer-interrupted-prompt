@@ -15,9 +15,25 @@ inquirer
     .prompt([
         {
             type: 'input',
-            name: 'intr-input',
+            name: 'intr-input1',
             message: 'Interrupted input',
-            interruptedKeyname: 'a'
+        },
+        {
+            type: 'input',
+            name: 'intr-input2',
+            message: 'Interrupted input with custom key (Press <a> to interrupt)',
+            interruptedKeyName: 'a'
+        },
+        {
+            type: 'input',
+            name: 'intr-input3',
+            message: 'Interrupted input with validate',
+            validate: (input) => {
+                if (input) {
+                    return true;
+                }
+                return "This input is required. Please enter something.";
+            },
         },
         {
             type: 'number',
