@@ -34,7 +34,7 @@ const replaceAllDefaults = inquirer => {
       inquirer.prompt.prompts[key]
     );
   });
-};
+}
 
 const InterruptedPrompt = {
     EVENT_INTERRUPTED: 'EVENT_INTERRUPTED',
