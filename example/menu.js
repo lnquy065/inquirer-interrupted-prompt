@@ -1,5 +1,5 @@
-const inquirer = require('inquirer');
-const InterruptedPrompt = require('../index')
+import inquirer from 'inquirer';
+import InterruptedPrompt from '../index.js';
 
 InterruptedPrompt.replaceAllDefaults(inquirer);
 
