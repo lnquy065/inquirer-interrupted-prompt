@@ -24,7 +24,7 @@ Assuming we don't want to create a file anymore, we want to go back to the main 
 
 One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer and its plugin prompts to this format with just one function.
 
-View demo menu code at: /example/menu.js
+View demo menu code at: /src/example.js
 
 # Installation
 
@@ -34,28 +34,31 @@ or
 
 `yarn add inquirer-interrupted-prompt`
 
+_Note: As of version 9, [inquirer](https://github.com/SBoudrias/Inquirer.js) have moved to ES modules. Please, upgrade `inquirer-interrupted-prompt` to the latest version for full support. In addition, projects are using inquirer < 9 can use the latest version of this plugin as well_
+
 # Usage
 
 After importing the package, we need to register new interrupted prompts to `inquirer`.
 
-For full code, please view `example.js` file in `example` folder.
+_Note: Examples below are written in ESModule, you can use CommonJS as well_
 
-## Turn all default inquirer prompts to interrupted prompts
+## To turn all prompts to interrupted prompts
 
 ```javascript
-const inquirer = require("inquirer");
-const InterruptedPrompt = require("inquirer-interrupted-prompt");
+import inquirer from "inquirer";
+import InterruptedPrompt from "inquirer-interrupted-prompt";
 
-InterruptedPrompt.replaceAllDefaults(inquirer);
+InterruptedPrompt.fromAll(inquirer);
 ```
 
-Now all default prompts `input, number, confirm, list, rawlist, expand, checkbox, password, editor` are turned. Now you can reuse your code without changing anything:
+Now all **default inquirer prompts** and **its plugins** will be converted to interrupted form. You can reuse your code without changing anything:
 
 ```javascript
-const inquirer = require("inquirer");
-const InterruptedPrompt = require("inquirer-interrupted-prompt");
+import inquirer from "inquirer";
+import InterruptedPrompt from "inquirer-interrupted-prompt";
+import autocompletePrompt from "inquirer-autocomplete-prompt"; // working with plugin as well
 
-InterruptedPrompt.replaceAllDefaults(inquirer);
+InterruptedPrompt.fromAll(inquirer);
 
 inquirer
   .prompt([
@@ -83,23 +86,23 @@ inquirer
   });
 ```
 
-## Turn an inquirer prompts or its plugin to interrupted prompts
+## To turn a specific prompt to interrupted prompt
 
-If you don't want to turn all default prompt, you can use the `from` function to turn a specific prompt that you want.
+If you don't want to convert all prompts, you can use the `from` function to convert a specific prompt that you want.
 
 ```javascript
-const inquirer = require("inquirer");
-const inquirerInputPrompt = require("inquirer/lib/prompts/input");
-const InterruptedPrompt = require("inquirer-interrupted-prompt");
+import inquirer from "inquirer";
+import inquirerInputPrompt from "inquirer/lib/prompts/input";
+import InterruptedPrompt from "inquirer-interrupted-prompt";
 
 inquirer.registerPrompt("input", InterruptedPrompt.from(inquirerInputPrompt));
 ```
 
-Or with plugin prompts
+With plugin prompt
 
 ```javascript
-const autocompletePrompt = require("inquirer-autocomplete-prompt");
-const InterruptedPrompt = require("inquirer-interrupted-prompt");
+import autocompletePrompt from "inquirer-autocomplete-prompt";
+import InterruptedPrompt from "inquirer-interrupted-prompt";
 
 inquirer.registerPrompt(
   "autocomplete",

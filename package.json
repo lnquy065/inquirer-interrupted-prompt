@@ -1,9 +1,7 @@
 {
   "name": "inquirer-interrupted-prompt",
-  "type": "module",
   "version": "2.0.0",
   "description": "Turning any existing inquirer and its plugin prompts into prompts that can be interrupted with a custom key",
-  "main": "index.js",
   "homepage": "https://github.com/lnquy065/inquirer-interrupted-prompt",
   "repository": "lnquy065/inquirer-interrupted-prompt",
   "keywords": [
@@ -19,6 +17,14 @@
   "author": "lnquy065",
   "license": "MIT",
   "devDependencies": {
-    "inquirer": "^9.1.0"
+    "inquirer": "^8.1.0"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+      ".": {
+          "import": "./dist/mjs/index.js",
+          "require": "./dist/cjs/index.js"
+      }
   }
 }

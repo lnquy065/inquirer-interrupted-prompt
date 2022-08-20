@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
-import InterruptedPrompt from '../index.js';
+import InterruptedPrompt from '../dist/mjs/index.js';
 
-InterruptedPrompt.replaceAllDefaults(inquirer);
+InterruptedPrompt.fromAll(inquirer);
 
 main();
 

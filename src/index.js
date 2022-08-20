@@ -1,7 +1,7 @@
 import observe from "inquirer/lib/utils/events.js";
 
 const rejectIfInterrupted = (event, hotkey, reject) => {
-    if (event.key.name === hotkey) reject(InterruptedPrompt.EVENT_INTERRUPTED)
+  if (event.key.name === hotkey) reject(InterruptedPrompt.EVENT_INTERRUPTED)
 }
 
 /**
@@ -10,17 +10,17 @@ const rejectIfInterrupted = (event, hotkey, reject) => {
  * @returns {InterruptedPrompt}
  */
 const from = (basePrompt) => {
-    class IntrPrompt extends basePrompt {
-        run(cb) {
-            const intrKeyName = this.opt.interruptedKeyName || this.opt.interruptedKeyname || 'escape'
-            return new Promise((resolve, reject) => {
-                const events = observe(this.rl);
-                events.keypress.pipe().forEach(e => rejectIfInterrupted(e, intrKeyName, reject));
-                super.run(cb).then(resolve, reject);
-            })
-        }
+  class IntrPrompt extends basePrompt {
+    run(cb) {
+      const intrKeyName = this.opt.interruptedKeyName || this.opt.interruptedKeyname || 'escape'
+      return new Promise((resolve, reject) => {
+        const events = observe(this.rl);
+        events.keypress.pipe().forEach(e => rejectIfInterrupted(e, intrKeyName, reject));
+        super.run(cb).then(resolve, reject);
+      })
     }
-    return IntrPrompt;
+  }
+  return IntrPrompt;
 };
 
 /**
@@ -37,9 +37,13 @@ const replaceAllDefaults = inquirer => {
 }
 
 const InterruptedPrompt = {
-    EVENT_INTERRUPTED: 'EVENT_INTERRUPTED',
-    from,
-    replaceAllDefaults
+  EVENT_INTERRUPTED: 'EVENT_INTERRUPTED',
+  from,
+  /**
+   * @deprecated
+   */
+  replaceAllDefaults,
+  fromAll: replaceAllDefaults
 }
 
 
