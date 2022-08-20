@@ -2,7 +2,7 @@
 
 Allows turning any existing [inquirer](https://github.com/SBoudrias/Inquirer.js) and its plugin prompts into prompts that can be interrupted with a custom key.
 
-![Menu demo](https://raw.githubusercontent.com/lnquy065/inquirer-interrupted-prompt/master/example/demo-menu.gif)
+![Menu demo](https://raw.githubusercontent.com/lnquy065/inquirer-interrupted-prompt/master/readme/demo-menu.gif)
 
 It works for menu and submenu programs. For example, we have an application that allows browsing and editing files:
 
