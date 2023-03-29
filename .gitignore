@@ -1,4 +1,5 @@
 /node_modules
-/demo
 yarn.lock
 package-lock.json
+example/ts-demo/node_modules
+.idea

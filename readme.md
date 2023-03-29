@@ -24,7 +24,7 @@ Assuming we don't want to create a file anymore, we want to go back to the main 
 
 One convenient thing is that you don't need to register for this type of prompt, you just need to convert existing inquirer and its plugin prompts to this format with just one function.
 
-View demo menu code at: /src/example.js
+View demo menu code at: /example/ts-demo/src/index.ts
 
 # Installation
 
@@ -34,7 +34,12 @@ or
 
 `yarn add inquirer-interrupted-prompt`
 
-_Note: As of version 9, [inquirer](https://github.com/SBoudrias/Inquirer.js) have moved to ES modules. Please, upgrade `inquirer-interrupted-prompt` to the latest version for full support. In addition, projects are using inquirer < 9 can use the latest version of this plugin as well_
+_Note: projects are using inquirer < 9, please use version 2.x.x_
+
+```
+npm install inquirer-interrupted-prompt@^2
+yarn add inquirer-interrupted-prompt@^2
+```
 
 # Usage
 
@@ -141,6 +146,30 @@ inquirer
     }
   });
 ```
+
+### With Combined Keys
+
+**Ctrl**
+```javascript
+{
+  interruptedKeyName: "ctrl+f"
+}
+```
+
+**Alt**
+```javascript
+{
+  interruptedKeyName: "meta+f"
+}
+```
+
+**Shift**
+```javascript
+{
+  interruptedKeyName: "shift+f"
+}
+```
+
 
 ## Exception handler
 
